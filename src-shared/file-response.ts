@@ -1,4 +1,4 @@
 export interface FileResponse{
-    err?: Error,
+    err?: string,
     data?: string,
 }

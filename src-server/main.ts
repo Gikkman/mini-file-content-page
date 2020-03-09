@@ -1,10 +1,14 @@
 import path from 'path'
 import express from 'express';
 import http from 'http';
-import { readFile } from 'fs';
-import { FileResponse } from "../src-shared/file-response";
+import { readFile, readFileSync } from 'fs';
 
-const port = 7878;
+import { FileResponse } from "../src-shared/file-response";
+import { AppConfig } from "../src-shared/app-config";
+
+const config: AppConfig = JSON.parse(readFileSync(path.join(__dirname, '..', 'app-config.json'), 'utf8'));
+
+const port = config.port;
 const url = 'localhost';
 const staticUrl = '/';
 const staticDir = path.join(__dirname, 'public');
@@ -25,9 +29,12 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/file', (req, res) => {
-    const location = path.join(__dirname, '..', 'example-content.txt');
+    const location = path.join(config.fileLocation);
     readFile(location, 'utf8' , (err, data) => {
-        const output: FileResponse = {err: err || undefined, data: data};
+        const output: FileResponse = {
+            err: err ? "File not found: " + location.toString() : undefined, 
+            data: data
+        };
         res.json(output);
     });
 });
