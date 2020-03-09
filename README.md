@@ -5,7 +5,11 @@ Super small app for rendering the content of a text file in a neat web page
 
 Run `git clone https://github.com/Gikkman/mini-file-content-page.git`
 
-Then `npm install --only=prod && npm run build`
+Then `cd mini-file-content-page`
+
+Then `npm install`
+
+Then `npm run build`
 
 ## Setup
 
