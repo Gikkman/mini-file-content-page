@@ -1,9 +1,8 @@
 import path from 'path'
 import express from 'express';
 import http from 'http';
-
-import moduleA from '@server/module-A';
-import moduleB from '@server/module-B';
+import { readFile } from 'fs';
+import { FileResponse } from "../src-shared/file-response";
 
 const port = 7878;
 const url = 'localhost';
@@ -21,18 +20,16 @@ server.listen(port, url);
 // Config server
 app.use(express.json());
 
-function print(s: string) {
-    console.log(s);
-}
-
 app.get('/', (req, res, next) => {
-    let a = moduleA();
-    print(a);
-    
-    let b = moduleB();
-    print(b);
-
     next();
+});
+
+app.get('/file', (req, res) => {
+    const location = path.join(__dirname, '..', 'example-content.txt');
+    readFile(location, 'utf8' , (err, data) => {
+        const output: FileResponse = {err: err || undefined, data: data};
+        res.json(output);
+    });
 });
 
 app.use(staticUrl, express.static(staticDir));

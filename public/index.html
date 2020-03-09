@@ -6,7 +6,29 @@
     <title>Document</title>
 </head>
 <body>
-Hello World from HTML!
+    <div class="parent">
+        <div class="left">
+
+        </div>
+        <div class="middle">
+            
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+    <div id="content">
+        
+    </div>
 </body>
+<style>
+.parent {
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+</style>
 <script src="dist/index.bundle.js"></script>
 </html>
