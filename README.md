@@ -39,3 +39,6 @@ Typically, you probably would probably want to start from the following:
     color: black;
 }
 `
+
+# Develop
+I sugget using VSCode to develop this further. Just clone the repository, run `npm i`  and then `npm run watch`. You can hook onto the dev process by the configured VSCode goal (under the debug tab). The `watch` command builds incrementally all the time, so you just gotta refresh the page as you develop.
