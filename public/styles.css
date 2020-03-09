@@ -1,0 +1,42 @@
+:root {
+    /* These are set by code, in the index.ts file */
+    --height: ; 
+    --width: ;
+}
+
+body {
+    margin: 0px !important;
+}
+.parent {
+    display: flex;
+    justify-content: center;
+    height: var(--height);
+    width: 100%;
+}
+.edge {
+    width: var(--width);
+    min-width: calc(var(--width)/2 - 1px);
+    background-repeat: no-repeat;
+}
+.left {
+    width: var(--width);
+    background-image: url("border-left.png");
+    
+    margin-right: calc(var(--width) * -1 / 2);
+}
+.middle {
+    background-image: url("border-mid.png");
+    background-repeat: repeat-x;
+    min-width: 50px;
+    z-index: 1;
+}
+.right {
+    background-image: url("border-right.png");
+    margin-left: calc(var(--width) * -1 / 2);
+}
+
+#content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
